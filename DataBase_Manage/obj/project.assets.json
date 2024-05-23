@@ -498,11 +498,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Universidad\\7mo Semestre\\Construccion de software\\DataBase_Manage\\DataBase_Manage.csproj",
+      "projectUniqueName": "D:\\Universidad\\prueba-git\\Proyecto_CS\\DataBase_Manage\\DataBase_Manage.csproj",
       "projectName": "DataBase_Manage",
-      "projectPath": "D:\\Universidad\\7mo Semestre\\Construccion de software\\DataBase_Manage\\DataBase_Manage.csproj",
+      "projectPath": "D:\\Universidad\\prueba-git\\Proyecto_CS\\DataBase_Manage\\DataBase_Manage.csproj",
       "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-      "outputPath": "D:\\Universidad\\7mo Semestre\\Construccion de software\\DataBase_Manage\\obj\\",
+      "outputPath": "D:\\Universidad\\prueba-git\\Proyecto_CS\\DataBase_Manage\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

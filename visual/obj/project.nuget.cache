@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x1B/Jpv6TeIqGJiZ+YlbDOAiPIlJ/NKb5du2vG/ZnJiGE339cz7Rw71XiTahJxLGcv824ykEbxMv2QBPJYdBWw==",
+  "dgSpecHash": "rrE3XGqsz/SfAW+UY8plLU4A5tqsMz1htNyAeJteBjNoTRB89LqbyxV8vy1AsrX4a5S9Jpmjz5rMzzwH7UgP0g==",
   "success": true,
-  "projectFilePath": "D:\\Universidad\\7mo Semestre\\Construccion de software\\visual\\Controlador.csproj",
+  "projectFilePath": "D:\\Universidad\\prueba-git\\Proyecto_CS\\visual\\Controlador.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Pc\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

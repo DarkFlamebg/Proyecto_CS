@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bj9aclYwwKESxqks+89zUtgD8LGtMAlZAty7MVHXCwcJehxdJ7x1i0Yeptud3Lw3Yo8tOystbr/ZLKcYBn1umA==",
+  "dgSpecHash": "4gYQ55qE0AqMFPJ3i6mMeJ8nMAjjPhNUMJXT0ZEenMPYr4Hk7QNMus3/Eig85IhxYr3IVgCKUTm2Ek1ZksFERQ==",
   "success": true,
-  "projectFilePath": "D:\\Universidad\\7mo Semestre\\Construccion de software\\DataBase_Manage\\DataBase_Manage.csproj",
+  "projectFilePath": "D:\\Universidad\\prueba-git\\Proyecto_CS\\DataBase_Manage\\DataBase_Manage.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Pc\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

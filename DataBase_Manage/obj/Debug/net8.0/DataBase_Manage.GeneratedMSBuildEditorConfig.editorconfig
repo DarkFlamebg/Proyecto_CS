@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DataBase_Manage
-build_property.ProjectDir = D:\Universidad\7mo Semestre\Construccion de software\DataBase_Manage\
+build_property.ProjectDir = D:\Universidad\prueba-git\Proyecto_CS\DataBase_Manage\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
