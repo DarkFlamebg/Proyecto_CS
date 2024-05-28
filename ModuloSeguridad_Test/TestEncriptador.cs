@@ -66,6 +66,6 @@ namespace ModuloSeguridad_Test
             Assert.AreEqual(textoOriginal, textoDesencriptado);
         }
 
-        // Puedes agregar más pruebas para casos especiales, como texto nulo, caracteres especiales, etc.
+        // Puedes agregar mï¿½s pruebas para casos especiales, como texto nulo, caracteres especiales, etc.
     }
 }
