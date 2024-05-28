@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Data;
 using DataBase_Manage;
+using ModuloServicios.__obj;
 
 namespace ModuloServicios
 {
@@ -31,6 +32,38 @@ namespace ModuloServicios
             catch (Exception ex)
             {
                 //manejo de errores
+                throw ex;
+            }
+            finally
+            {
+                conn.CloseConnection();
+            }
+        }
+
+        public bool ActualizarCita(int citaID, string IdUsuario, DateTime FechaEmision, string EstadoPago)
+        {
+            try
+            {
+                using (SqlCommand sqlCommand = new SqlCommand())
+                {
+                    //Asignar la conexion
+                    sqlCommand.Connection = conn.OpenConnection();
+                    sqlCommand.CommandText = "sp_ActualizarCita";
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                    //Parametros del procedimiento almacenado
+                    sqlCommand.Parameters.AddWithValue("@citaID", citaID);
+                    sqlCommand.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+                    sqlCommand.Parameters.AddWithValue("@Fecha", FechaEmision);
+                    sqlCommand.Parameters.AddWithValue("@EstadoPago", EstadoPago);
+
+                    //Ejecutar el procedimiento almacenado
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
             finally
