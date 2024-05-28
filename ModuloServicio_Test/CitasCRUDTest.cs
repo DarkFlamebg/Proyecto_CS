@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ModuloServicios;
+using ModuloServicios.__obj;
 using System;
 using System.Data;
 namespace ModuloServicio_Test
@@ -14,22 +15,6 @@ namespace ModuloServicio_Test
             public void Setup()
             {
                 citasCRUD = new CitasCRUD();
-            }
-
-            [TestMethod]
-            public void ObtenerTodasLasCitas_DeberiaRetornarCitasCorrectamente()
-            {
-                // Arrange
-                string idUsuario = "3";
-                citasCRUD.AgregarCita(idUsuario, 101);
-                citasCRUD.AgregarCita(idUsuario, 102);
-
-                // Act
-                var citas = citasCRUD.ObtenerTodasLasCitas(idUsuario, 0);
-
-                // Assert
-                Assert.IsNotNull(citas, "La lista de citas no debería ser nula.");
-                Assert.IsTrue(citas.Rows.Count >= 2, "Se esperaban al menos dos citas.");
             }
 
             [TestMethod]
@@ -71,7 +56,6 @@ namespace ModuloServicio_Test
                 Assert.AreEqual(estadoPago, cita["EstadoPago"].ToString(), "El estado de pago de la cita no coincide.");
             }
 
-
             [TestMethod]
             public void EliminarCita_DeberiaEliminarCitaCorrectamente()
             {
@@ -87,6 +71,23 @@ namespace ModuloServicio_Test
                 var citas = citasCRUD.ObtenerTodasLasCitas(idUsuario, citaID);
                 Assert.AreEqual(0, citas.Rows.Count, "La lista de citas debería estar vacía después de eliminar la cita.");
             }
+
+            [TestMethod]
+            public void ObtenerTodasLasCitas_DeberiaRetornarCitasCorrectamente()
+            {
+                // Arrange
+                string idUsuario = "3";
+                citasCRUD.AgregarCita(idUsuario, 101);
+                citasCRUD.AgregarCita(idUsuario, 102);
+
+                // Act
+                var citas = citasCRUD.ObtenerTodasLasCitas(idUsuario, 0);
+
+                // Assert
+                Assert.IsNotNull(citas, "La lista de citas no debería ser nula.");
+                Assert.IsTrue(citas.Rows.Count >= 2, "Se esperaban al menos dos citas.");
+            }
+
 
         }
 
