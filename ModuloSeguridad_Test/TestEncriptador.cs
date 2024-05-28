@@ -1,7 +1,5 @@
-
 using ModuloSeguridad;
-
-namespace ModuloSeguridadTest
+namespace ModuloSeguridad_Test
 {
     [TestClass]
     public class EncriptadorTests
