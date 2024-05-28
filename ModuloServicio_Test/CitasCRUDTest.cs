@@ -29,7 +29,7 @@ namespace ModuloServicio_Test
 
                 // Assert
                 var citas = citasCRUD.ObtenerTodasLasCitas(idUsuario, citaID);
-                Assert.IsNotNull(citas, "La lista de citas no debería ser nula.");
+                Assert.IsNotNull(citas, "La lista de citas no deberï¿½a ser nula.");
                 Assert.IsTrue(citas.Rows.Count > 0, "Se esperaba al menos una cita.");
                 DataRow cita = citas.Rows[0];
                 Assert.AreEqual(idUsuario, cita["IdUsuario"].ToString(), "El IdUsuario de la cita no coincide.");
@@ -49,10 +49,10 @@ namespace ModuloServicio_Test
                 var citas = citasCRUD.ObtenerTodasLasCitas("", idDetalleCita); // "" puede representar cualquier usuario si no se usa
 
                 // Assert
-                Assert.IsNotNull(citas, "La lista de citas no debería ser nula.");
+                Assert.IsNotNull(citas, "La lista de citas no deberï¿½a ser nula.");
                 Assert.IsTrue(citas.Rows.Count > 0, "Se esperaba al menos una cita.");
                 DataRow cita = citas.Rows[0];
-                Assert.AreEqual(fechaEmision, DateTime.Parse(cita["Fecha"].ToString()), "La fecha de emisión de la cita no coincide.");
+                Assert.AreEqual(fechaEmision, DateTime.Parse(cita["Fecha"].ToString()), "La fecha de emisiï¿½n de la cita no coincide.");
                 Assert.AreEqual(estadoPago, cita["EstadoPago"].ToString(), "El estado de pago de la cita no coincide.");
             }
 
@@ -69,7 +69,7 @@ namespace ModuloServicio_Test
 
                 // Assert
                 var citas = citasCRUD.ObtenerTodasLasCitas(idUsuario, citaID);
-                Assert.AreEqual(0, citas.Rows.Count, "La lista de citas debería estar vacía después de eliminar la cita.");
+                Assert.AreEqual(0, citas.Rows.Count, "La lista de citas deberï¿½a estar vacï¿½a despuï¿½s de eliminar la cita.");
             }
 
             [TestMethod]
@@ -84,7 +84,7 @@ namespace ModuloServicio_Test
                 var citas = citasCRUD.ObtenerTodasLasCitas(idUsuario, 0);
 
                 // Assert
-                Assert.IsNotNull(citas, "La lista de citas no debería ser nula.");
+                Assert.IsNotNull(citas, "La lista de citas no deberï¿½a ser nula.");
                 Assert.IsTrue(citas.Rows.Count >= 2, "Se esperaban al menos dos citas.");
             }
 
