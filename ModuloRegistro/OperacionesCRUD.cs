@@ -6,7 +6,7 @@ using ModuloSeguridad.__obj;
 
 namespace ModuloRegistro
 {
-    public class OperacionesCRUD //: IOperacionesCRUD
+    public class OperacionesCRUD : IOperacionesCRUD
     {
         private readonly CD_Connection conn = new CD_Connection();
         private Encriptador encriptar = new Encriptador();
