@@ -1,6 +1,6 @@
 # Proyecto de Reserva de citas en un Restaurante
 
-El IDE usado del proyecto es Visual Community 2022
+El programa fue realizado en el IDE Visual Studio Community 2022 y la base de datos utilizada fue SQL Server Management Studio Management Studio 19, todo esto realizado en el sistema operativo Windows 10.
 
 # Clonar el repositorio
 
