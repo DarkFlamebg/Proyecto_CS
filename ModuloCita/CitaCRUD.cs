@@ -1,12 +1,13 @@
 ﻿using DataBase_Manage;
-using System.Data.SqlClient;
+using System;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace ModuloCita
 {
     public class CitaCRUD : ICitaCRUD
     {
-        private static CD_Connection conn = new CD_Connection();
+        private readonly CD_Connection conn = new CD_Connection();
 
         public DataTable ObtenerDetallesCitasPorUsuario(string IdUsuario)
         {
@@ -14,18 +15,14 @@ namespace ModuloCita
             {
                 using (SqlCommand sqlCommand = new SqlCommand())
                 {
-                    // Asignar la conexión
                     sqlCommand.Connection = conn.OpenConnection();
                     sqlCommand.CommandText = "sp_ObtenerDetallesCitasPorUsuario";
                     sqlCommand.CommandType = CommandType.StoredProcedure;
 
-                    // Parámetros del procedimiento almacenado
                     sqlCommand.Parameters.AddWithValue("@Id_Usuario", IdUsuario);
 
-                    // Crear un SqlDataAdapter para obtener los resultados del procedimiento almacenado
                     using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
                     {
-                        // Llenar un DataTable con los resultados
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
                         return dataTable;
@@ -34,7 +31,36 @@ namespace ModuloCita
             }
             catch (Exception ex)
             {
-                // Manejo de errores
+                throw ex;
+            }
+            finally
+            {
+                conn.CloseConnection();
+            }
+        }
+
+        public DataTable ObtenerTodasLasCitas(int idUsuario)
+        {
+            try
+            {
+                using (SqlCommand sqlCommand = new SqlCommand())
+                {
+                    sqlCommand.Connection = conn.OpenConnection();
+                    sqlCommand.CommandText = "sp_ObtenerTodasLasCitas";
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                    sqlCommand.Parameters.AddWithValue("@Id_Usuario", idUsuario);
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
             finally

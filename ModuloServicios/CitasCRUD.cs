@@ -1,5 +1,6 @@
-﻿using System.Data.SqlClient;
+﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using DataBase_Manage;
 using ModuloServicios.__obj;
 
@@ -9,29 +10,26 @@ namespace ModuloServicios
     {
         private readonly CD_Connection conn = new CD_Connection();
 
-        public void AgregarCita(string Idusuario, int citaID)
+        public void AgregarCita(int idUsuario, DateTime fecha, string estadoPago)
         {
             try
             {
                 using (SqlCommand sqlCommand = new SqlCommand())
                 {
-                    //Asignar la conexion
                     sqlCommand.Connection = conn.OpenConnection();
-                    sqlCommand.CommandText = "sp_AgregarCitaNueva";
+                    sqlCommand.CommandText = "sp_AgregarCita";
                     sqlCommand.CommandType = CommandType.StoredProcedure;
 
-                    //Parametros del procedimiento almacenado
-                    sqlCommand.Parameters.AddWithValue("@Id_Usuario", Idusuario);
-                    sqlCommand.Parameters.AddWithValue("@citaID", citaID);
+                    sqlCommand.Parameters.AddWithValue("@Id_Usuario", idUsuario);
+                    sqlCommand.Parameters.AddWithValue("@Fecha", fecha);
+                    sqlCommand.Parameters.AddWithValue("@EstadoPago", estadoPago);
 
-                    //Ejecutar el procedimiento almacenado
                     sqlCommand.ExecuteNonQuery();
                     Console.WriteLine("Cita agregada correctamente");
                 }
             }
             catch (Exception ex)
             {
-                //manejo de errores
                 throw ex;
             }
             finally
@@ -40,24 +38,21 @@ namespace ModuloServicios
             }
         }
 
-        public bool ActualizarCita(int citaID, string IdUsuario, DateTime FechaEmision, string EstadoPago)
+        public bool ActualizarCita(int citaID, int idUsuario, DateTime fecha, string estadoPago)
         {
             try
             {
                 using (SqlCommand sqlCommand = new SqlCommand())
                 {
-                    //Asignar la conexion
                     sqlCommand.Connection = conn.OpenConnection();
                     sqlCommand.CommandText = "sp_ActualizarCita";
                     sqlCommand.CommandType = CommandType.StoredProcedure;
 
-                    //Parametros del procedimiento almacenado
-                    sqlCommand.Parameters.AddWithValue("@citaID", citaID);
-                    sqlCommand.Parameters.AddWithValue("@IdUsuario", IdUsuario);
-                    sqlCommand.Parameters.AddWithValue("@Fecha", FechaEmision);
-                    sqlCommand.Parameters.AddWithValue("@EstadoPago", EstadoPago);
+                    sqlCommand.Parameters.AddWithValue("@CitaID", citaID);
+                    sqlCommand.Parameters.AddWithValue("@Id_Usuario", idUsuario);
+                    sqlCommand.Parameters.AddWithValue("@Fecha", fecha);
+                    sqlCommand.Parameters.AddWithValue("@EstadoPago", estadoPago);
 
-                    //Ejecutar el procedimiento almacenado
                     int rowsAffected = sqlCommand.ExecuteNonQuery();
                     return rowsAffected > 0;
                 }
@@ -72,21 +67,20 @@ namespace ModuloServicios
             }
         }
 
-        public void EliminarCita(string IdUsuario, int citaID)
+
+        public void EliminarCita(int citaID)
         {
             try
             {
                 using (SqlCommand sqlCommand = new SqlCommand())
                 {
-                    //Asignar la conexion
                     sqlCommand.Connection = conn.OpenConnection();
-                    sqlCommand.CommandText = "sp_EliminarCitaDeUsuario";
+                    sqlCommand.CommandText = "sp_EliminarCita";
                     sqlCommand.CommandType = CommandType.StoredProcedure;
-                    sqlCommand.Parameters.AddWithValue("@Id_Usuario", IdUsuario);
-                    sqlCommand.Parameters.AddWithValue("@citaID", citaID);
+                    sqlCommand.Parameters.AddWithValue("@CitaID", citaID);
 
-                    //Ejecutar el stored procedure
                     sqlCommand.ExecuteNonQuery();
+                    Console.WriteLine("Cita eliminada correctamente");
                 }
             }
             catch (Exception ex)
@@ -99,66 +93,28 @@ namespace ModuloServicios
             }
         }
 
-        public DataTable ObtenerTodasLasCitas(string IdUsuario, int citaID)
+        public DataTable ObtenerTodasLasCitas(int idUsuario)
         {
             try
             {
                 using (SqlCommand sqlCommand = new SqlCommand())
                 {
                     sqlCommand.Connection = conn.OpenConnection();
-                    sqlCommand.CommandText = "sp_ObtenerTodasCitas";
+                    sqlCommand.CommandText = "sp_ObtenerTodasLasCitas";
                     sqlCommand.CommandType = CommandType.StoredProcedure;
 
-                    //Parametros del procedimiento almacenado
-                    sqlCommand.Parameters.AddWithValue("@Id_Usuario", IdUsuario);
-                    sqlCommand.Parameters.AddWithValue("@citaID", citaID);
+                    sqlCommand.Parameters.AddWithValue("@Id_Usuario", idUsuario);
 
-                    //Crear un sqlDataAdapter para obtener los resultados del procedimiento almacenado
                     using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
                     {
-                        //Lenar el datatable con los resultados
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                        return dataTable; 
+                        return dataTable;
                     }
                 }
             }
             catch (Exception ex)
             {
-                //Manejo de errores
-                throw ex;
-            }
-            finally 
-            {
-                conn.CloseConnection( );
-            }
-        }
-        public void InsertarCita(int IdDetalleCita, DateTime FechaEmision, string EstadoPago)
-        {
-            try
-            {
-                using (SqlCommand sqlCommand = new SqlCommand())
-                {
-                    //Asignar la conexion
-                    sqlCommand.Connection = conn.OpenConnection();
-                    sqlCommand.CommandText = "sp_InsertarCita";
-                    sqlCommand.CommandType = CommandType.StoredProcedure;
-
-                    //Parametros del procedimientos almacenado
-                    sqlCommand.Parameters.AddWithValue("@Id_DetalleCita", IdDetalleCita);
-                    sqlCommand.Parameters.AddWithValue("@FechaEmision", FechaEmision);
-                    sqlCommand.Parameters.AddWithValue("@EstadoPago", EstadoPago);
-
-                    //Ejecutar el procedimiento almacenado
-                    sqlCommand.ExecuteNonQuery();
-
-                    Console.WriteLine("Cita Insertada correctamente");
-                }
-            }
-            catch (Exception ex) 
-            {
-
-                // Manejo de errores
                 throw ex;
             }
             finally
@@ -166,7 +122,5 @@ namespace ModuloServicios
                 conn.CloseConnection();
             }
         }
-        
-
     }
 }

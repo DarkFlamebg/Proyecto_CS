@@ -1,8 +1,10 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using DataBase_Manage;
-using ModuloSeguridad;
 using ModuloSeguridad.__obj;
+using ModuloSeguridad;
 
 namespace ModuloRegistro
 {
@@ -17,12 +19,10 @@ namespace ModuloRegistro
             {
                 using (SqlCommand sqlCommand = new SqlCommand())
                 {
-                    // Asignar la conexión
                     sqlCommand.Connection = conn.OpenConnection();
-                    sqlCommand.CommandText = "InsertarUsuario";
+                    sqlCommand.CommandText = "sp_InsertarUsuario";
                     sqlCommand.CommandType = CommandType.StoredProcedure;
 
-                    // Parámetros del procedimiento almacenado
                     sqlCommand.Parameters.AddWithValue("@Id_Usuario", nuevoUsuario.id);
                     sqlCommand.Parameters.AddWithValue("@Nombre", nuevoUsuario.nombre);
                     sqlCommand.Parameters.AddWithValue("@Apellido", nuevoUsuario.apellido);
@@ -31,8 +31,8 @@ namespace ModuloRegistro
                     sqlCommand.Parameters.AddWithValue("@Rol", nuevoUsuario.rol);
                     sqlCommand.Parameters.AddWithValue("@Direccion", nuevoUsuario.direccion);
                     sqlCommand.Parameters.AddWithValue("@Telefono", nuevoUsuario.telefono);
+                    sqlCommand.Parameters.AddWithValue("@Estado", nuevoUsuario.estado);
 
-                    // Ejecutar el procedimiento almacenado
                     sqlCommand.ExecuteNonQuery();
                     Console.WriteLine("Usuario agregado correctamente.");
                 }
@@ -54,10 +54,10 @@ namespace ModuloRegistro
             {
                 using (SqlCommand sqlCommand = new SqlCommand())
                 {
-                    // Asignar la conexión
                     sqlCommand.Connection = conn.OpenConnection();
-                    sqlCommand.CommandText = "ActualizarUsuario";
+                    sqlCommand.CommandText = "sp_ActualizarUsuario";
                     sqlCommand.CommandType = CommandType.StoredProcedure;
+
                     sqlCommand.Parameters.AddWithValue("@IdUsuario", id_usuario);
                     sqlCommand.Parameters.AddWithValue("@Nombre", nombre);
                     sqlCommand.Parameters.AddWithValue("@Apellido", apellido);
@@ -66,13 +66,11 @@ namespace ModuloRegistro
                     sqlCommand.Parameters.AddWithValue("@Telefono", telefono);
                     sqlCommand.Parameters.AddWithValue("@Estado", estado);
 
-                    // Ejecutar el Stored Procedure
                     sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                // Manejo de errores
                 throw ex;
             }
             finally
@@ -81,25 +79,22 @@ namespace ModuloRegistro
             }
         }
 
-        public void EliminarUsuario(string idUsuario)
+        public void EliminarUsuario(string id_usuario)
         {
             try
             {
                 using (SqlCommand sqlCommand = new SqlCommand())
                 {
-                    // Asignar la conexión
                     sqlCommand.Connection = conn.OpenConnection();
-                    sqlCommand.CommandText = "EliminarUsuario";
+                    sqlCommand.CommandText = "sp_EliminarUsuario";
                     sqlCommand.CommandType = CommandType.StoredProcedure;
-                    sqlCommand.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    sqlCommand.Parameters.AddWithValue("@IdUsuario", id_usuario);
 
-                    // Ejecutar el Stored Procedure
                     sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                // Manejo de errores
                 throw ex;
             }
             finally
@@ -117,14 +112,12 @@ namespace ModuloRegistro
             {
                 using (SqlCommand sqlCommand = new SqlCommand())
                 {
-                    // Asignar la conexión
                     sqlCommand.Connection = conn.OpenConnection();
-                    sqlCommand.CommandText = "SelectUsuarios";
+                    sqlCommand.CommandText = "sp_SelectUsuarios";
                     sqlCommand.CommandType = CommandType.StoredProcedure;
 
                     using (SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand))
                     {
-                        // Llenar el DataTable con los resultados del Stored Procedure
                         dataAdapter.Fill(dataTable);
                     }
                 }
@@ -149,7 +142,6 @@ namespace ModuloRegistro
             }
             catch (Exception ex)
             {
-                // Manejo de errores
                 throw ex;
             }
             finally

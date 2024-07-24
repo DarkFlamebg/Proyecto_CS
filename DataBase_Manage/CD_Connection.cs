@@ -5,7 +5,7 @@ namespace DataBase_Manage
 {
     public class CD_Connection
     {
-        private SqlConnection DB_Connection = new SqlConnection("Server=DESKTOP-AOFHQJ5\\SQLEXPRESS;Database=Proyecto_CS; Integrated Security=true");
+        private SqlConnection DB_Connection = new SqlConnection("Server=DESKTOP-AOFHQJ5\\SQLEXPRESS;Database=ProyectoCS; Integrated Security=true");
 
         public SqlConnection OpenConnection()
         {
