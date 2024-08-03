@@ -12,7 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ModuloCita\ModuloCita.csproj" />
+    <ProjectReference Include="..\ModuloRegistro\ModuloRegistro.csproj" />
     <ProjectReference Include="..\ModuloSeguridad\ModuloSeguridad.csproj" />
+    <ProjectReference Include="..\ModuloServicios\ModuloServicios.csproj" />
   </ItemGroup>
 
 </Project>

@@ -170,6 +170,33 @@
           "bin/placeholder/DataBase_Manage.dll": {}
         }
       },
+      "ModuloCita/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "DataBase_Manage": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ModuloCita.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ModuloCita.dll": {}
+        }
+      },
+      "ModuloRegistro/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "DataBase_Manage": "1.0.0",
+          "ModuloSeguridad": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ModuloRegistro.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ModuloRegistro.dll": {}
+        }
+      },
       "ModuloSeguridad/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -183,6 +210,19 @@
         },
         "runtime": {
           "bin/placeholder/ModuloSeguridad.dll": {}
+        }
+      },
+      "ModuloServicios/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "DataBase_Manage": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ModuloServicios.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ModuloServicios.dll": {}
         }
       }
     }
@@ -518,15 +558,33 @@
       "path": "../DataBase_Manage/DataBase_Manage.csproj",
       "msbuildProject": "../DataBase_Manage/DataBase_Manage.csproj"
     },
+    "ModuloCita/1.0.0": {
+      "type": "project",
+      "path": "../ModuloCita/ModuloCita.csproj",
+      "msbuildProject": "../ModuloCita/ModuloCita.csproj"
+    },
+    "ModuloRegistro/1.0.0": {
+      "type": "project",
+      "path": "../ModuloRegistro/ModuloRegistro.csproj",
+      "msbuildProject": "../ModuloRegistro/ModuloRegistro.csproj"
+    },
     "ModuloSeguridad/1.0.0": {
       "type": "project",
       "path": "../ModuloSeguridad/ModuloSeguridad.csproj",
       "msbuildProject": "../ModuloSeguridad/ModuloSeguridad.csproj"
+    },
+    "ModuloServicios/1.0.0": {
+      "type": "project",
+      "path": "../ModuloServicios/ModuloServicios.csproj",
+      "msbuildProject": "../ModuloServicios/ModuloServicios.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "ModuloCita >= 1.0.0",
+      "ModuloRegistro >= 1.0.0",
       "ModuloSeguridad >= 1.0.0",
+      "ModuloServicios >= 1.0.0",
       "NutgetTest >= 1.0.0",
       "System.Data.SqlClient >= 4.8.6"
     ]
@@ -563,8 +621,17 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "D:\\Universidad\\prueba-git\\Proyecto_CS\\ModuloCita\\ModuloCita.csproj": {
+              "projectPath": "D:\\Universidad\\prueba-git\\Proyecto_CS\\ModuloCita\\ModuloCita.csproj"
+            },
+            "D:\\Universidad\\prueba-git\\Proyecto_CS\\ModuloRegistro\\ModuloRegistro.csproj": {
+              "projectPath": "D:\\Universidad\\prueba-git\\Proyecto_CS\\ModuloRegistro\\ModuloRegistro.csproj"
+            },
             "D:\\Universidad\\prueba-git\\Proyecto_CS\\ModuloSeguridad\\ModuloSeguridad.csproj": {
               "projectPath": "D:\\Universidad\\prueba-git\\Proyecto_CS\\ModuloSeguridad\\ModuloSeguridad.csproj"
+            },
+            "D:\\Universidad\\prueba-git\\Proyecto_CS\\ModuloServicios\\ModuloServicios.csproj": {
+              "projectPath": "D:\\Universidad\\prueba-git\\Proyecto_CS\\ModuloServicios\\ModuloServicios.csproj"
             }
           }
         }

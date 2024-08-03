@@ -1,3 +1,5 @@
+use ProyectoCS;
+
 CREATE TABLE Usuarios (
     Id_Usuario INT PRIMARY KEY,
     Nombre NVARCHAR(50),
@@ -10,7 +12,8 @@ CREATE TABLE Usuarios (
     Estado CHAR DEFAULT 'A',
 );
 
-
+select * from Usuarios;
+select * from Citas;
 
 CREATE TABLE Citas (
     CitaID INT PRIMARY KEY IDENTITY(1,1),
@@ -35,6 +38,17 @@ BEGIN
     INSERT INTO Citas (Id_Usuario, Fecha, EstadoPago)
     VALUES (@Id_Usuario, @Fecha, @EstadoPago);
 END
+
+-- Procedimiento para obtener usuarios
+CREATE PROCEDURE ObtenerUsuario
+    @UsuarioIngresado NVARCHAR(50)
+AS
+BEGIN
+    SELECT Id_Usuario, Contraseña, Rol
+    FROM Usuarios
+    WHERE Usuario = @UsuarioIngresado
+END
+
 
 -- Procedimiento para actualizar una cita
 CREATE PROCEDURE sp_ActualizarCita
@@ -100,6 +114,7 @@ CREATE PROCEDURE sp_ActualizarUsuario
     @IdUsuario INT,
     @Nombre NVARCHAR(50),
     @Apellido NVARCHAR(50),
+    @Usuario NVARCHAR(50), 
     @Rol NVARCHAR(50),
     @Direccion NVARCHAR(100),
     @Telefono NVARCHAR(20),
@@ -109,7 +124,7 @@ BEGIN
     UPDATE Usuarios
     SET Nombre = @Nombre,
         Apellido = @Apellido,
-        Usuario = @Usuario,
+        Usuario = @Usuario, 
         Rol = @Rol,
         Direccion = @Direccion,
         Telefono = @Telefono,
@@ -148,6 +163,9 @@ INSERT INTO Citas (Id_Usuario, Fecha, EstadoPago)
 VALUES 
 (1, '2024-07-25', 'Pagado'),
 (2, '2024-07-26', 'Pendiente');
+
+select * from Usuarios;
+select * from Citas;
 
 -- Ejecutar procedimientos almacenados para agregar citas de prueba
 EXEC sp_AgregarCita @Id_Usuario = 1, @Fecha = '2024-08-01 14:00:00', @EstadoPago = 'Pendiente';
