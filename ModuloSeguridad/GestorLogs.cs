@@ -10,7 +10,7 @@ namespace ModuloSeguridad
         // Método para registrar actividades del usuario
         public void RegistrarLog(string controlador, string accion)
         {
-            if (!Directory.Exists("C:\\Users\\Luis\\Documents\\Logs"))
+            if (!Directory.Exists("C:\\Users\\StevenPC\\Documents\\Logs"))
             {
                 Directory.CreateDirectory("Logs");
             }
@@ -18,7 +18,7 @@ namespace ModuloSeguridad
             try
             {
                 // Crea un nuevo archivo o sobrescribe el archivo si ya existe
-                using (StreamWriter writer = new StreamWriter("C:\\Users\\Luis\\Documents\\Logs\\archivo.txt", true))
+                using (StreamWriter writer = new StreamWriter("C:\\Users\\StevenPC\\Documents\\Logs\\archivo.txt", true))
                 {
                     // Escribe el texto en el archivo
                     writer.WriteLine($"Usuario: {controlador}, Acción: {accion}, Fecha: {DateTime.Now}");
